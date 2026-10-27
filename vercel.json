@@ -178,30 +178,6 @@
       "has": [
         {
           "type": "query",
-          "key": "page_id",
-          "value": "2"
-        }
-      ],
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/index.php",
-      "has": [
-        {
-          "type": "query",
-          "key": "page_id",
-          "value": "2"
-        }
-      ],
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "query",
           "key": "p",
           "value": "1"
         }
