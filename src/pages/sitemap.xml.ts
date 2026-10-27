@@ -9,9 +9,9 @@ export const GET = () => {
     const english = italian === '/' ? '/en/home/' : `/en${italian}`;
     const alternatives = [['it', italian], ['en', english], ['x-default', italian]];
     return `<url><loc>${escape(site + page.path)}</loc>${alternatives.map(([language, path]) => `<xhtml:link rel="alternate" hreflang="${language}" href="${escape(site + path)}"/>`).join('')}</url>`;
-  }).join('');
+  }).join('\n');
 
-  return new Response(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}</urlset>`, {
+  return new Response(`<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/css" href="/sitemap.css"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}</urlset>`, {
     headers: { 'Content-Type': 'application/xml; charset=utf-8' },
   });
 };

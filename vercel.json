@@ -281,6 +281,21 @@
       "source": "/en/wp-sitemap.xml",
       "destination": "/sitemap.xml",
       "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2023/11/cropped-knd-global-favicon-32x32.jpg",
+      "destination": "/favicon-32.png",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2023/11/cropped-knd-global-favicon-192x192.jpg",
+      "destination": "/favicon-192.png",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2023/11/cropped-knd-global-favicon-180x180.jpg",
+      "destination": "/apple-touch-icon.png",
+      "permanent": true
     }
   ],
   "headers": [
@@ -334,6 +349,28 @@
         {
           "key": "X-Robots-Tag",
           "value": "noindex, follow"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.css",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/css; charset=utf-8"
         }
       ]
     }

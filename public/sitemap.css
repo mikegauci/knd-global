@@ -1,0 +1,10 @@
+@namespace sm url("http://www.sitemaps.org/schemas/sitemap/0.9");
+@namespace xhtml url("http://www.w3.org/1999/xhtml");
+sm|urlset{display:block;box-sizing:border-box;max-width:1000px;margin:32px auto;padding:24px;color:#1c353d;background:#f9fafb;font:16px/1.6 system-ui,sans-serif;counter-reset:page}
+sm|urlset::before{content:"KND Global — XML Sitemap";display:block;margin-bottom:28px;padding:16px 0 24px 64px;border-bottom:3px solid #fe9300;background:url('/favicon-32.png') no-repeat 12px 23px;font-size:28px;font-weight:700;line-height:1.4}
+sm|url{display:block;position:relative;margin:0;padding:16px 16px 16px 56px;background:#fff;border-bottom:1px solid #dce2e4;counter-increment:page}
+sm|url::before{content:counter(page,decimal-leading-zero);position:absolute;left:16px;color:#8b4b00;font-weight:600}
+sm|loc{display:block;overflow-wrap:anywhere}
+xhtml|link{display:none}
+sm|urlset::after{content:"Italian and English page URLs. Search engines read the original XML, including the language alternatives.";display:block;margin-top:24px;font-size:14px;color:#50616a}
+@media(max-width:600px){sm|urlset{margin:0;padding:20px 12px;font-size:14px}sm|urlset::before{font-size:22px;padding-left:52px;background-position:4px 19px}sm|url{padding:14px 12px 14px 44px}sm|url::before{left:12px}}
