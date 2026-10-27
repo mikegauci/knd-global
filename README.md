@@ -15,13 +15,13 @@ npm run dev
 
 - `src/content/pages.json`: all eight Italian and English pages, retaining the existing URLs.
 - `src/content/footer.html`: shared footer; English link destinations and introduction are supplied by the layout.
-- `src/layouts/Layout.astro`: navigation, language switch, canonical URLs, page-specific SEO, social metadata and Organization/WebSite/WebPage structured data.
+- `src/layouts/Layout.astro`: navigation, language switch, canonical URLs, page-specific SEO, social metadata and Organization/WebSite/WebPage structured data, page breadcrumbs and transport Service schema.
 - `public/styles/`: original visual CSS extracted into ordinary local files, local font definitions and static navigation/accessibility refinements. Retained CSS class names are styling hooks, not CMS dependencies.
 - `public/assets/`: local WebP images and responsive variants, WOFF2 fonts, compressed H.264 hero video, poster and social image.
 - The hero video autoplays muted and loops without controls. Reduced-motion preferences pause it. Browser autoplay or power-saving policies can prevent automatic playback.
 - Contact pages use `mailto:` and `tel:` links and a lazy Google Maps embed. **There are no contact forms or Mailjet integration**, following the owner's updated instruction.
 - `vercel.json`: permanent redirects, security and cache headers. Old media URLs redirect to local assets; the broken English `/en/about-us-2/` link redirects to `/en/about-us/`.
-- `/sitemap.xml`, `/robots.txt`, `/llms.txt`: static SEO/discovery files. The sitemap includes the eight public pages only. The branded error page is excluded and marked `noindex`.
+- `/sitemap.xml`, `/robots.txt`, `/llms.txt`: static SEO/discovery files. The sitemap includes the eight public pages only, with Italian, English and x-default alternate links. The branded error page is excluded and marked `noindex`.
 
 ## Credentials and domain administration
 

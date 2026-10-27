@@ -266,6 +266,21 @@
       "source": "/wp-content/uploads/2023/11/knd-global-logo-300x149.png",
       "destination": "/assets/knd-global-logo-41cf61e3-320.webp",
       "permanent": true
+    },
+    {
+      "source": "/wp-sitemap-posts-page-1.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/en/wp-sitemap-posts-page-1.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/en/wp-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
     }
   ],
   "headers": [
@@ -310,6 +325,15 @@
         {
           "key": "X-Robots-Tag",
           "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/hello-world/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
         }
       ]
     }

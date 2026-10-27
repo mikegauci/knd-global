@@ -1,6 +1,5 @@
 ---
 import footerTemplate from '../content/footer.html?raw';
-import pages from '../content/pages.json';
 const {page,noindex=false}=Astro.props;
 const en=page.lang==='en';
 const home=en?'/en/home/':'/';
@@ -24,7 +23,14 @@ let footer=footerTemplate;
 if(en){footer=footer.replace('Il vostro partner strategico per trasporti e logistica. Offriamo soluzioni personalizzate per assicurare il vostro successo globale!','Your strategic partner for transport and logistics. We offer tailored solutions to ensure your global success!').replaceAll('href="/"','href="/en/home/"').replaceAll('href="/about-us/"','href="/en/about-us/"').replaceAll('href="/partners/"','href="/en/partners/"').replaceAll('href="/contact-us/"','href="/en/contact-us/"');}
 footer=footer.replaceAll(' aria-current="page"','');
 const org={'@type':'Organization','@id':'https://www.knd-global.eu/#organization',name:'KND Global',url:'https://www.knd-global.eu/',logo:'https://www.knd-global.eu/assets/knd-global-logo-41cf61e3.webp',email:'info@knd-global.com',telephone:['+35699998822','+3908231212788'],sameAs:['https://www.linkedin.com/company/knd-global/'],address:[{'@type':'PostalAddress',streetAddress:'1, Spiteri Buildings, Ganni Vassallo Street',addressLocality:'Luqa',postalCode:'LQA 1511',addressCountry:'MT'},{'@type':'PostalAddress',streetAddress:'Interporto Sud Europa, Via Ficucella, lotto 14.1',addressLocality:'Maddaloni',addressRegion:'CE',postalCode:'81024',addressCountry:'IT'}]};
-const schema={'@context':'https://schema.org','@graph':[org,{'@type':'WebSite','@id':'https://www.knd-global.eu/#website',url:'https://www.knd-global.eu/',name:'KND Global',inLanguage:['it','en'],publisher:{'@id':org['@id']}},{'@type':page.path.includes('contact-us')?'ContactPage':page.path.includes('about-us')?'AboutPage':'WebPage','@id':canonical+'#webpage',url:canonical,name:title,description,inLanguage:en?'en-GB':'it-IT',isPartOf:{'@id':'https://www.knd-global.eu/#website'},about:{'@id':org['@id']}}]};
+const isHome=page.path==='/'||page.path==='/en/home/';
+const breadcrumbs=!isHome&&!noindex?{'@type':'BreadcrumbList','@id':canonical+'#breadcrumbs',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`https://www.knd-global.eu${home}`},{'@type':'ListItem',position:2,name:page.path.includes('about-us')?(en?'About KND Global':'Chi siamo'):page.path.includes('contact-us')?(en?'Contact Us':'Contatti'):(en?'Partners':'Partner'),item:canonical}]}:null;
+const services=isHome?[
+ {'@type':'Service',name:en?'Land transport':'Trasporto terrestre',serviceType:en?'International road freight, groupage and door-to-door shipping':'Trasporti terrestri internazionali, groupage e spedizioni door-to-door',provider:{'@id':org['@id']}},
+ {'@type':'Service',name:en?'Air transport':'Trasporto aereo',serviceType:en?'International air freight':'Spedizioni aeree internazionali',provider:{'@id':org['@id']}},
+ {'@type':'Service',name:en?'Maritime transport':'Trasporto marittimo',serviceType:en?'Sea freight, groupage and full-container shipping':'Spedizioni marittime, groupage e container completi',provider:{'@id':org['@id']}}
+]:[];
+const schema={'@context':'https://schema.org','@graph':[org,{'@type':'WebSite','@id':'https://www.knd-global.eu/#website',url:'https://www.knd-global.eu/',name:'KND Global',inLanguage:['it','en'],publisher:{'@id':org['@id']}},{'@type':page.path.includes('contact-us')?'ContactPage':page.path.includes('about-us')?'AboutPage':'WebPage','@id':canonical+'#webpage',url:canonical,name:title,description,inLanguage:en?'en-GB':'it-IT',isPartOf:{'@id':'https://www.knd-global.eu/#website'},about:{'@id':org['@id']}},...(breadcrumbs?[breadcrumbs]:[]),...services]};
 ---
 <!doctype html>
 <html lang={en?'en-GB':'it-IT'}>
@@ -34,7 +40,8 @@ const schema={'@context':'https://schema.org','@graph':[org,{'@type':'WebSite','
   <link rel="canonical" href={canonical}/>
   {!noindex&&<><link rel="alternate" hreflang="it" href={`https://www.knd-global.eu${counterpart('it')}`}/><link rel="alternate" hreflang="en" href={`https://www.knd-global.eu${counterpart('en')}`}/><link rel="alternate" hreflang="x-default" href={`https://www.knd-global.eu${counterpart('it')}`}/></>}
   <meta property="og:type" content="website"/><meta property="og:site_name" content="KND Global"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:locale" content={en?'en_GB':'it_IT'}/><meta property="og:image" content="https://www.knd-global.eu/assets/social-card.jpg"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:alt" content="KND Global – Efficiency in Every Shipment Guaranteed"/>
-  <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content="https://www.knd-global.eu/assets/social-card.jpg"/>
+  <meta property="og:locale:alternate" content={en?'it_IT':'en_GB'}/>
+  <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content="https://www.knd-global.eu/assets/social-card.jpg"/><meta name="twitter:image:alt" content="KND Global – Efficiency in Every Shipment Guaranteed"/>
   <link rel="icon" type="image/webp" href="/assets/knd-global-logo-41cf61e3-320.webp"/>
   <link rel="preload" href="/assets/ubuntu-700.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="stylesheet" href="/styles/fonts.css"/><link rel="stylesheet" href="/styles/design.css"/>

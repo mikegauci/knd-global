@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /404
 Disallow: /wp-admin/
 Disallow: /wp-login.php
+
+# Error and archived pages use noindex; allow crawling so it can be read.
 Sitemap: https://www.knd-global.eu/sitemap.xml
