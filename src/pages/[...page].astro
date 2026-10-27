@@ -1,0 +1,7 @@
+---
+import pages from '../content/pages.json';
+import Layout from '../layouts/Layout.astro';
+export function getStaticPaths(){return pages.map(page=>({params:{page:page.path==='/'?undefined:page.path.slice(1,-1)},props:{page}}));}
+const {page}=Astro.props;
+---
+<Layout page={page}><Fragment set:html={page.html}/></Layout>

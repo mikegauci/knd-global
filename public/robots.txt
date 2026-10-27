@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /404
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Sitemap: https://www.knd-global.eu/sitemap.xml

@@ -1,0 +1,5 @@
+const menu=document.querySelector('.menu-button'),nav=document.querySelector('#primary-navigation');
+menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('is-open',open)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(menu?.getAttribute('aria-expanded')==='true'){menu.setAttribute('aria-expanded','false');nav.classList.remove('is-open');menu.focus()}document.querySelectorAll('details[open]').forEach(x=>x.removeAttribute('open'))}});
+const video=document.querySelector('video');if(video){video.muted=true;const motion=matchMedia('(prefers-reduced-motion:reduce)');function syncMotion(){if(motion.matches)video.pause();else video.play().catch(()=>{})}syncMotion();motion.addEventListener('change',syncMotion)}
+const topLink=document.querySelector('.back-top');if(topLink){const update=()=>{topLink.hidden=scrollY<400};update();addEventListener('scroll',update,{passive:true})}

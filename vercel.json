@@ -1,0 +1,341 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "409"
+        }
+      ],
+      "destination": "/en/partners/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "409"
+        }
+      ],
+      "destination": "/en/partners/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "407"
+        }
+      ],
+      "destination": "/en/contact-us/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "407"
+        }
+      ],
+      "destination": "/en/contact-us/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "405"
+        }
+      ],
+      "destination": "/en/home/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "405"
+        }
+      ],
+      "destination": "/en/home/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "401"
+        }
+      ],
+      "destination": "/en/about-us/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "401"
+        }
+      ],
+      "destination": "/en/about-us/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "213"
+        }
+      ],
+      "destination": "/partners/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "213"
+        }
+      ],
+      "destination": "/partners/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "196"
+        }
+      ],
+      "destination": "/contact-us/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "196"
+        }
+      ],
+      "destination": "/contact-us/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "137"
+        }
+      ],
+      "destination": "/about-us/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "137"
+        }
+      ],
+      "destination": "/about-us/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "2"
+        }
+      ],
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "2"
+        }
+      ],
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "1"
+        }
+      ],
+      "destination": "/hello-world/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "1"
+        }
+      ],
+      "destination": "/hello-world/",
+      "permanent": true
+    },
+    {
+      "source": "/en",
+      "destination": "/en/home/",
+      "permanent": true
+    },
+    {
+      "source": "/en/about-us-2/:rest*",
+      "destination": "/en/about-us/",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2023/08/executive-reuglations-header.jpeg",
+      "destination": "/assets/executive-reuglations-header-018b4fd7.webp",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2023/08/contact-us-bg.jpeg",
+      "destination": "/assets/contact-us-bg-bb38665e.webp",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2024/02/knd-global-vid-3.mp4",
+      "destination": "/assets/knd-hero.mp4",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2023/08/executive-about-header.jpeg",
+      "destination": "/assets/executive-about-header-d9682c03.webp",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2023/08/executive-our-mission-1.jpg",
+      "destination": "/assets/executive-our-mission-1-3f4cb47d.webp",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2023/11/knd-global-logo.png",
+      "destination": "/assets/knd-global-logo-41cf61e3.webp",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2023/11/knd-global-logo-130x65.png",
+      "destination": "/assets/knd-global-logo-41cf61e3-320.webp",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2023/11/knd-global-logo-300x149.png",
+      "destination": "/assets/knd-global-logo-41cf61e3-320.webp",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000"
+        }
+      ]
+    },
+    {
+      "source": "/styles/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/404(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ]
+}

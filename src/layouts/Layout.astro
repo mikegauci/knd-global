@@ -1,0 +1,65 @@
+---
+import footerTemplate from '../content/footer.html?raw';
+import pages from '../content/pages.json';
+const {page,noindex=false}=Astro.props;
+const en=page.lang==='en';
+const home=en?'/en/home/':'/';
+const links=[{path:home,label:'Home'},{path:en?'/en/about-us/':'/about-us/',label:'About KND Global'},{path:en?'/en/partners/':'/partners/',label:'Partners'},{path:en?'/en/contact-us/':'/contact-us/',label:'Contact Us'}];
+const counterpart=(lang:string)=>{const key=page.path.replace(/^\/en\//,'/').replace('/home/','/');return lang==='it'?key:(key==='/'?'/en/home/':`/en${key}`)};
+const descriptions:Record<string,string>={
+ '/':'KND Global: soluzioni personalizzate per trasporti terrestri, marittimi e aerei. Oltre 25 anni di esperienza nelle spedizioni e nella logistica internazionale.',
+ '/about-us/':'Scopri KND Global, il tuo partner strategico per trasporti, spedizioni e logistica. Esperienza, innovazione e soluzioni su misura per il tuo successo.',
+ '/partners/':'Le partnership di KND Global creano una rete internazionale affidabile per spedizioni efficienti e soluzioni logistiche senza confini.',
+ '/contact-us/':'Contatta KND Global per trasporti e spedizioni internazionali. Sedi a Luqa, Malta, e Maddaloni, Italia. Email: info@knd-global.com.',
+ '/en/home/':'KND Global delivers tailored land, sea and air transport solutions. Over 25 years of experience in international shipping and logistics, based in Malta and Italy.',
+ '/en/about-us/':'Meet KND Global: your strategic partner for international transport, shipping and logistics. Experienced professionals, innovation and tailored solutions.',
+ '/en/partners/':'Discover how KND Global’s international partnerships support reliable shipping, efficient logistics and global reach without barriers.',
+ '/en/contact-us/':'Contact KND Global for international transport and logistics. Find our offices in Luqa, Malta and Maddaloni, Italy. Email info@knd-global.com.'
+};
+const titles:Record<string,string>={'/':'KND Global – Efficiency in Every Shipment Guaranteed','/about-us/':'Chi siamo | KND Global','/partners/':'Partner e rete internazionale | KND Global','/contact-us/':'Contatti – Malta e Italia | KND Global','/en/home/':'KND Global – International Transport & Logistics','/en/about-us/':'About Us – Transport & Logistics | KND Global','/en/partners/':'Partners & Global Network | KND Global','/en/contact-us/':'Contact Us – Malta & Italy | KND Global'};
+const title=titles[page.path]||(page.path==='/hello-world/'?'Hello world! | KND Global':'Page not found | KND Global');
+const description=descriptions[page.path]||'This page could not be found. Explore KND Global transport and logistics services.';
+const canonical=`https://www.knd-global.eu${page.path}`;
+let footer=footerTemplate;
+if(en){footer=footer.replace('Il vostro partner strategico per trasporti e logistica. Offriamo soluzioni personalizzate per assicurare il vostro successo globale!','Your strategic partner for transport and logistics. We offer tailored solutions to ensure your global success!').replaceAll('href="/"','href="/en/home/"').replaceAll('href="/about-us/"','href="/en/about-us/"').replaceAll('href="/partners/"','href="/en/partners/"').replaceAll('href="/contact-us/"','href="/en/contact-us/"');}
+footer=footer.replaceAll(' aria-current="page"','');
+const org={'@type':'Organization','@id':'https://www.knd-global.eu/#organization',name:'KND Global',url:'https://www.knd-global.eu/',logo:'https://www.knd-global.eu/assets/knd-global-logo-41cf61e3.webp',email:'info@knd-global.com',telephone:['+35699998822','+3908231212788'],sameAs:['https://www.linkedin.com/company/knd-global/'],address:[{'@type':'PostalAddress',streetAddress:'1, Spiteri Buildings, Ganni Vassallo Street',addressLocality:'Luqa',postalCode:'LQA 1511',addressCountry:'MT'},{'@type':'PostalAddress',streetAddress:'Interporto Sud Europa, Via Ficucella, lotto 14.1',addressLocality:'Maddaloni',addressRegion:'CE',postalCode:'81024',addressCountry:'IT'}]};
+const schema={'@context':'https://schema.org','@graph':[org,{'@type':'WebSite','@id':'https://www.knd-global.eu/#website',url:'https://www.knd-global.eu/',name:'KND Global',inLanguage:['it','en'],publisher:{'@id':org['@id']}},{'@type':page.path.includes('contact-us')?'ContactPage':page.path.includes('about-us')?'AboutPage':'WebPage','@id':canonical+'#webpage',url:canonical,name:title,description,inLanguage:en?'en-GB':'it-IT',isPartOf:{'@id':'https://www.knd-global.eu/#website'},about:{'@id':org['@id']}}]};
+---
+<!doctype html>
+<html lang={en?'en-GB':'it-IT'}>
+ <head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{title}</title><meta name="description" content={description}/><meta name="robots" content={noindex?'noindex, nofollow':'index, follow, max-image-preview:large'}/>
+  <link rel="canonical" href={canonical}/>
+  {!noindex&&<><link rel="alternate" hreflang="it" href={`https://www.knd-global.eu${counterpart('it')}`}/><link rel="alternate" hreflang="en" href={`https://www.knd-global.eu${counterpart('en')}`}/><link rel="alternate" hreflang="x-default" href={`https://www.knd-global.eu${counterpart('it')}`}/></>}
+  <meta property="og:type" content="website"/><meta property="og:site_name" content="KND Global"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:locale" content={en?'en_GB':'it_IT'}/><meta property="og:image" content="https://www.knd-global.eu/assets/social-card.jpg"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:alt" content="KND Global – Efficiency in Every Shipment Guaranteed"/>
+  <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content="https://www.knd-global.eu/assets/social-card.jpg"/>
+  <link rel="icon" type="image/webp" href="/assets/knd-global-logo-41cf61e3-320.webp"/>
+  <link rel="preload" href="/assets/ubuntu-700.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="stylesheet" href="/styles/fonts.css"/><link rel="stylesheet" href="/styles/design.css"/>
+  {page.id&&<link rel="stylesheet" href={`/styles/page-${page.id}.css`}/>}
+  <link rel="stylesheet" href="/styles/site.css"/>
+  {!noindex&&<script type="application/ld+json" set:html={JSON.stringify(schema)}/>}
+  <script is:inline>document.documentElement.classList.add('js');</script>
+ </head>
+ <body class="ast-plain-container ast-no-sidebar ast-single-post ast-hfb-header" data-language={page.lang}>
+  <script is:inline>function breakpoint(){document.body.classList.toggle('ast-header-break-point',matchMedia('(max-width: 921px)').matches);document.body.classList.toggle('ast-desktop',!matchMedia('(max-width: 921px)').matches)}breakpoint();matchMedia('(max-width: 921px)').addEventListener('change',breakpoint);</script>
+  <a class="skip-link screen-reader-text" href="#main-content">{en?'Skip to content':'Salta al contenuto'}</a>
+  <header class="knd-header">
+   <div class="knd-header-inner">
+    <a href={home} aria-label="KND Global – Home" class="brand"><img src="/assets/knd-global-logo-41cf61e3-320.webp" width="130" height="65" alt="KND Global" fetchpriority="high"/></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label={en?'Toggle main menu':'Apri menu principale'}><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+    <nav id="primary-navigation" aria-label={en?'Main navigation':'Navigazione principale'}>
+     <ul>{links.map(l=><li><a href={l.path} aria-current={page.path===l.path?'page':undefined}>{l.label}</a></li>)}
+      <li class="language"><details><summary aria-label={en?'Select language':'Seleziona lingua'}><span aria-hidden="true">{en?'🇬🇧':'🇮🇹'}</span><span class="language-code">{en?'EN':'IT'}</span> <span aria-hidden="true">⌄</span></summary><ul><li><a href={counterpart('it')} lang="it" hreflang="it">🇮🇹 Italiano</a></li><li><a href={counterpart('en')} lang="en" hreflang="en">🇬🇧 English</a></li></ul></details></li>
+     </ul>
+    </nav>
+   </div>
+  </header>
+  <div id="content" class="site-content"><div class="ast-container"><div id="primary" class="content-area primary"><main id="main-content" class="site-main" tabindex="-1"><article class="ast-article-single"><div class="entry-content clear"><slot/></div></article></main></div></div></div>
+  <Fragment set:html={footer}/>
+  <a href="#main-content" class="back-top" aria-label={en?'Back to top':'Torna in alto'}>↑</a>
+  <script src="/site.js" is:inline defer></script>
+ </body>
+</html>

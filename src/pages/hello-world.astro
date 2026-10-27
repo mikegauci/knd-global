@@ -1,0 +1,5 @@
+---
+import Layout from '../layouts/Layout.astro';
+import post from '../content/legacy-post.json';
+---
+<Layout page={{path:'/hello-world/',lang:'en'}} noindex><section style="max-width:1200px;margin:auto;padding:60px 24px"><h1>{post.title}</h1><Fragment set:html={post.html}/></section></Layout>
